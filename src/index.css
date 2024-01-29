@@ -1,0 +1,161 @@
+body {
+  text-align: center;
+  margin: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav {
+  padding: 8px 20px;
+  background-color: #cba563;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.nav-title {
+  font-size: 2.1rem;
+  margin: 0;
+  color: #fefefe;
+}
+
+.toggler  {
+  font-size:2rem;
+  display: flex;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  row-gap: 20px;
+  padding: 30px 0;
+  background-color: #fefefe;
+}
+
+.cards-container.dark{
+  background-color: #242424;
+}
+
+.card {
+  padding: 20px 20px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  max-width: 300px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fefefe;
+  color: black;
+  transition: ease-in-out 0.3s;
+}
+
+.card:hover {
+  transform: translate(0, -5px);
+}
+
+
+.dark .card {
+  border: 0.5px solid black;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  background-color: #363636;
+  color: #fefefe;
+}
+
+.card-img {
+  margin: 0;
+  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+.card-title {
+  margin: 20px 0;
+  font-size: 4rem;
+}
+
+.card-subtitle {
+  margin: 5px 0;
+  font-size: 2rem;
+}
+
+
+.card-date {
+  margin: 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+.dark .card-title {
+  color: #fefefe;
+}
+
+.dark .card-subtitle {
+  color: #fefefe;
+}
+
+
+.dark .card-date {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.my-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  align-items: justify;
+  background-color: #fefefe;
+}
+
+.my-form.dark {
+  color: #fefefe;
+  background-color: #242424;
+}
+
+.my-form > input {
+  padding: 2px;
+  margin: 5px;
+  line-height: 1.5rem;
+  text-indent: 0.2rem;
+  border-radius: 7px;
+  border: 0.5px solid rgba(0, 0, 0, 0.6);
+  background-color: #fefefe;
+}
+
+.my-form.dark > input {
+  background-color: #c1c1c1;
+}
+
+.my-form > label {
+  padding: 2px;
+  margin: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.my-form > .btn {
+  margin: 5px;
+  color: #e3b66b;
+  background-color: #242424;
+  font-weight: bold;
+  letter-spacing: .05rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: ease 0.2s;
+}
+
+
+.my-form > .btn:hover {
+  background-color: #e3b66b;
+  color: #242424;
+}
+
+.toggler {
+  border: none;
+  background-color: transparent;
+}
