@@ -4,10 +4,20 @@ function Card(props) {
     return (
         <div className="card">
             <img className="card-img" src={props.img}></img>
+            <div className='btn-container'>
+                <button className="delete-btn" title="Delete card" 
+                    onClick={(e) => props.deleteCard(e, props.cardId)}>
+                    <i className='bx bxs-trash' ></i>
+                </button>
+                <button className="edit-btn" title="Edit card" 
+                    onClick={(e) => props.toggleNewForm(e, props.cardId)}>
+                        <i className='bx bxs-edit'></i>
+                </button>
+            </div>
+
             <h2 className="card-title">{props.title}</h2>
             <p className="card-description">{props.description}</p>
             <p className="card-date">{props.date}</p>
-            <button onClick={(e) => props.toggleNewForm(e, props.cardId)}>Edit</button>
         </div>
     )
 }
@@ -18,7 +28,8 @@ Card.propTypes = {
     description: PropTypes.string,
     date: PropTypes.string,
     cardId: PropTypes.string,
-    toggleNewForm: PropTypes.func
+    toggleNewForm: PropTypes.func,
+    deleteCard: PropTypes.func
 }
 
 

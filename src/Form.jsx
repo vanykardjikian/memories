@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Form(props) {
 
     const [formData, setFormData] = React.useState(
-    props.editableFormData ?
+    Object.keys(props.editableFormData).length !== 0 ?
     {
         ...props.editableFormData
     }
@@ -19,6 +19,7 @@ function Form(props) {
     )
 
 
+    
     function handleChange(e) {
         const {name, value} = e.target
         setFormData(prevData => {
@@ -36,7 +37,7 @@ function Form(props) {
     return (
         <div className='form-popup'>
             <div className='form-popup-inner'>
-                <form className="my-form" 
+                <form className="my-form" autoComplete="off"
                     onSubmit={(e) => Object.keys(props.editableFormData).length === 0 ? 
                         props.handleSubmit(e, formData) :
                         props.handleSubmit(e, {...formData, cardId: props.editableFormData.cardId})
@@ -58,7 +59,7 @@ function Form(props) {
                     value={formData.date}>
                     </input>
                     <label htmlFor='img'>Image URL</label>
-                    <input type="url" name="img" id="img" 
+                    <input type="url" name="img" id="img" required 
                     onChange={handleChange} 
                     value={formData.img}>
                     </input>

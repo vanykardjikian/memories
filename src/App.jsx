@@ -11,13 +11,13 @@ function App() {
 
 	const [darkMode, setDarkMode] = React.useState(false)
 
-	const [isNewFormVisible, setIsNewFormVisible] = React.useState(false)
+	const [isFormVisible, setisFormVisible] = React.useState(false)
 
 	const [editableFormData, seteditableFormData] = React.useState({})
 
 	function toggleNewForm(e, cardId) {
 		console.log("id: " + cardId)
-		setIsNewFormVisible(isNewFormVisible => !isNewFormVisible);
+		setisFormVisible(isFormVisible => !isFormVisible);
 		const tempFormData = cards.filter(card => card.cardId === cardId)[0]
 		console.log(tempFormData)
 		seteditableFormData({...tempFormData})
@@ -47,6 +47,13 @@ function App() {
 		toggleNewForm()
 	}
 
+
+	function deleteCard(e, targetId) {
+		setCards(prevCards => {
+			return prevCards.filter(card => card.cardId !== targetId)
+		})
+	}
+
 	const cardComponents = cards.map(card => {
 		return (
 			<Card
@@ -57,6 +64,7 @@ function App() {
 				date={card.date}
 				cardId = {card.cardId}
 				toggleNewForm={toggleNewForm}
+				deleteCard={deleteCard}
 			/>
 		)
 	})
@@ -66,21 +74,25 @@ function App() {
 	return (
 		<>
 			<Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+			<main className={!darkMode ? "" : "dark"}>
 			<div className={!darkMode ? "" : "dark"}>
-				<button onClick={toggleNewForm}>Add Photo</button>
-				{isNewFormVisible && <Form 
+				{isFormVisible && <Form 
 					handleSubmit={handleSubmit} 
 					toggleNewForm={toggleNewForm} 
 					editableFormData={editableFormData}
 				/>}
+
 			</div>
-			<main className={!darkMode ? "" : "dark"}>
+			<button 
+				className='new-btn'
+				onClick={toggleNewForm}>
+					<i className='bx bx-plus-circle'></i><h4>&nbsp;New Card</h4>
+			</button>
 				{cardComponents.length ?
 					<div className="cards-container">
 						{cardComponents}
 					</div> :
-					<p className='empty-album'>You have no photos in your album</p>
-
+					<p className='empty-album'>You have no photos in your album!</p>
 				}
 			</main>
 		</>
