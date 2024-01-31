@@ -29,11 +29,6 @@ function Form(props) {
     }
 
 
-    /*function handleSubmit(e) {
-        e.preventDefault()
-        console.log("here")
-    }*/
-
     return (
         <div className='form-popup'>
             <div className='form-popup-inner'>
@@ -58,7 +53,7 @@ function Form(props) {
                     onChange={handleChange} 
                     value={formData.date}>
                     </input>
-                    <label htmlFor='img'>Image URL</label>
+                    <label htmlFor='img'>Image URL <span>(must end in jpg, jpeg, png, webp, avif, gif or svg)</span></label>
                     <input type="url" name="img" id="img" required 
                     onChange={handleChange} 
                     value={formData.img}>

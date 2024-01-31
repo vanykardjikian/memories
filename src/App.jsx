@@ -28,9 +28,22 @@ function App() {
 		setDarkMode(prevMode => !prevMode)
 	}
 
+
+	function isImage(url) {
+		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+	}
+
 	//console.log(cards)
 	function handleSubmit(e, formData) {
 		e.preventDefault()
+
+		if(!isImage(formData.img)) {
+			alert("Invalid URL")
+			return
+		}
+
+
+
 		if (!formData.cardId) {
 			setCards(prevCards => [...prevCards, { ...formData, cardId: nanoid() }])
 		} else {

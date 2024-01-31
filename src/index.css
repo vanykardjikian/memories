@@ -80,6 +80,7 @@ main.dark {
 .new-btn > h4 {
 	margin: 0;
 }
+
 .empty-album {
 	font-size: 3rem;
 	font-weight: 700;
@@ -297,6 +298,10 @@ main.dark {
 	margin: 10px 1px 1px 5px;
 	font-size: 1.1rem;
 	font-weight: 700;
+}
+
+.my-form > label > span {
+	font-weight: normal;
 }
 
 .form-btns {
