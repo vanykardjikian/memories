@@ -37,18 +37,18 @@ function Form(props) {
                         props.handleSubmit(e, formData) :
                         props.handleSubmit(e, {...formData, cardId: props.editableFormData.cardId})
                     }>
-                    <label htmlFor='title'>Title</label>
+                    <label htmlFor='title'>Title <span>(optional)</span></label>
                     <input 
                     type="text" name="title" id="title" 
                     onChange={handleChange}
                     value={formData.title}>
                     </input>
-                    <label htmlFor='description'>Description</label>
+                    <label htmlFor='description'>Description <span>(optional)</span></label>
                     <input type="text" name="description" id="description"
                     onChange={handleChange} 
                     value={formData.description}>
                     </input>
-                    <label htmlFor='date'>Date</label>
+                    <label htmlFor='date'>Date <span>(optional)</span></label>
                     <input type="date" name="date" id="date" 
                     onChange={handleChange} 
                     value={formData.date}>

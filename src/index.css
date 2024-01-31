@@ -35,6 +35,7 @@ nav {
 }
 
 .toggler {
+	color: white;
 	font-size: 2rem;
 	display: flex;
 	border: none;
@@ -47,7 +48,7 @@ main {
 	align-items: center;
 	background-color: #F5F5F5;
 	position: fixed;
-	top: 75px;
+	top: 74px;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -77,6 +78,14 @@ main.dark {
 	color: #242424;
 }
 
+.dark .new-btn {
+	color: rgba(245, 245, 245, 0.7)
+}
+
+.dark .new-btn:hover {
+	color: rgba(245, 245, 245, 1)
+}
+
 .new-btn > h4 {
 	margin: 0;
 }
@@ -85,8 +94,10 @@ main.dark {
 	font-size: 3rem;
 	font-weight: 700;
 	letter-spacing: 0.4rem;
-	padding-bottom: 7px;
-	margin-top: 300px;
+	padding: 7px;
+	margin: 20px;
+	position: absolute;
+	top: 40%;
 	border-bottom: 4px solid #cba563;
 	color: #242424;
 }
@@ -226,7 +237,6 @@ main.dark {
 
 
 
-
 .form-popup {
 	position: fixed;
 	z-index: 1;
@@ -301,12 +311,13 @@ main.dark {
 }
 
 .my-form > label > span {
-	font-weight: normal;
+	font-weight: 200;
 }
 
 .form-btns {
 	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
@@ -363,3 +374,18 @@ main.dark {
 	border: 1px solid #e3b66b;
 }
 
+@media (max-width:900px) {
+	.form-popup-inner {
+		width: 90%;
+	}
+	nav {
+		height: 60px;
+	}
+
+	main {
+		top: 59px;
+	}
+	html {
+		font-size: 80%;
+	}
+}
