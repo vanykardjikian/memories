@@ -7,6 +7,7 @@ function Card(props) {
             <h2 className="card-title">{props.title}</h2>
             <p className="card-description">{props.description}</p>
             <p className="card-date">{props.date}</p>
+            <button onClick={(e) => props.toggleNewForm(e, props.cardId)}>Edit</button>
         </div>
     )
 }
@@ -15,7 +16,9 @@ Card.propTypes = {
     img: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.string,
+    cardId: PropTypes.string,
+    toggleNewForm: PropTypes.func
 }
 
 

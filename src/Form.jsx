@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 function Form(props) {
 
-    const [formData, setFormData] = React.useState({
+    const [formData, setFormData] = React.useState(
+    props.editableFormData ?
+    {
+        ...props.editableFormData
+    }
+    :
+    {
         title: "",
         description: "",
         date: "",
         img: "",
-        id: "",
-    })
+        cardId: "",
+    }
+    )
 
 
     function handleChange(e) {
@@ -29,7 +36,11 @@ function Form(props) {
     return (
         <div className='form-popup'>
             <div className='form-popup-inner'>
-                <form className="my-form" onSubmit={(e) => props.handleSubmit(e, formData)}>
+                <form className="my-form" 
+                    onSubmit={(e) => Object.keys(props.editableFormData).length === 0 ? 
+                        props.handleSubmit(e, formData) :
+                        props.handleSubmit(e, {...formData, cardId: props.editableFormData.cardId})
+                    }>
                     <label htmlFor='title'>Title</label>
                     <input 
                     type="text" name="title" id="title" 
@@ -52,7 +63,9 @@ function Form(props) {
                     value={formData.img}>
                     </input>
                     <div className='form-btns'>
-                        <button type='submit' className='add' title="Add photo">Add</button>
+                        <button className='add' title="Add photo">
+                            {Object.keys(props.editableFormData).length === 0 ? 'Add' : 'Save'}
+                            </button>
                         <button type="button" className='cancel' 
                             title="Cancel" onClick={props.toggleNewForm}>Cancel</button>
                     </div>
@@ -67,6 +80,7 @@ function Form(props) {
 Form.propTypes = {
     handleSubmit: PropTypes.func,
     toggleNewForm: PropTypes.func,
+    editableFormData: PropTypes.object
 }
 
 
