@@ -5,7 +5,7 @@ function Form(props) {
 
     const [formData, setFormData] = React.useState({
         title: "",
-        subtitle: "",
+        description: "",
         date: "",
         img: "",
         id: "",
@@ -36,10 +36,10 @@ function Form(props) {
                     onChange={handleChange}
                     value={formData.title}>
                     </input>
-                    <label htmlFor='subtitle'>Subtitle</label>
-                    <input type="text" name="subtitle" id="subtitle"
+                    <label htmlFor='description'>Description</label>
+                    <input type="text" name="description" id="description"
                     onChange={handleChange} 
-                    value={formData.subtitle}>
+                    value={formData.description}>
                     </input>
                     <label htmlFor='date'>Date</label>
                     <input type="date" name="date" id="date" 

@@ -5,7 +5,7 @@ function Card(props) {
         <div className="card">
             <img className="card-img" src={props.img}></img>
             <h2 className="card-title">{props.title}</h2>
-            <p className="card-subtitle">{props.subtitle}</p>
+            <p className="card-description">{props.description}</p>
             <p className="card-date">{props.date}</p>
         </div>
     )
@@ -14,7 +14,7 @@ function Card(props) {
 Card.propTypes = {
     img: PropTypes.string,
     title: PropTypes.string,
-    subtitle: PropTypes.string,
+    description: PropTypes.string,
     date: PropTypes.string
 }
 

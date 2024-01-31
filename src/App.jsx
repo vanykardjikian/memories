@@ -33,7 +33,7 @@ function App() {
 			<Card
 				key={card.id}
 				title={card.title}
-				subtitle={card.subtitle}
+				description={card.description}
 				img={card.img}
 				date={card.date}
 			/>
