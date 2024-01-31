@@ -1,6 +1,6 @@
-function Card(props) {
-    console.log("props" + props)
+import PropTypes from 'prop-types';
 
+function Card(props) {
     return (
         <div className="card">
             <img className="card-img" src={props.img}></img>
@@ -10,5 +10,13 @@ function Card(props) {
         </div>
     )
 }
+
+Card.propTypes = {
+    img: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    date: PropTypes.string
+}
+
 
 export default Card
