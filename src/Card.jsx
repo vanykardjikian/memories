@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function Card(props) {
     return (
         <div className="card">
-            <img className="card-img" src={props.img}></img>
+            <img className="card-img" src={props.img ? props.img : props.imgFile}></img>
             <div className='btn-container'>
                 <button className="delete-btn" title="Delete card" 
                     onClick={(e) => props.deleteCard(e, props.cardId)}>
@@ -24,6 +24,7 @@ function Card(props) {
 
 Card.propTypes = {
     img: PropTypes.string,
+    imgFile: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
     date: PropTypes.string,

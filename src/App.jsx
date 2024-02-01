@@ -33,11 +33,12 @@ function App() {
 		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
 	}
 
-	//console.log(cards)
+
 	function handleSubmit(e, formData) {
 		e.preventDefault()
 
-		if(!isImage(formData.img)) {
+		console.log(formData)
+		if(formData.img && !isImage(formData.img)) {
 			alert("Invalid URL")
 			return
 		}
@@ -74,6 +75,7 @@ function App() {
 				title={card.title}
 				description={card.description}
 				img={card.img}
+				imgFile={card.imgFile}
 				date={card.date}
 				cardId = {card.cardId}
 				toggleNewForm={toggleNewForm}
@@ -89,6 +91,7 @@ function App() {
 			<Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 			<main className={!darkMode ? "" : "dark"}>
 			<div className={!darkMode ? "" : "dark"}>
+
 				{isFormVisible && <Form 
 					handleSubmit={handleSubmit} 
 					toggleNewForm={toggleNewForm} 

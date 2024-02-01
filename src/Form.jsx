@@ -14,6 +14,7 @@ function Form(props) {
         description: "",
         date: "",
         img: "",
+        imgFile: "",
         cardId: "",
     }
     )
@@ -21,9 +22,9 @@ function Form(props) {
 
     
     function handleChange(e) {
-        const {name, value} = e.target
+        const {name, value, files} = e.target
         setFormData(prevData => {
-            return ({...prevData, [name]: value})
+            return ({...prevData, [name]: name === "imgFile" ? URL.createObjectURL(files[0]): value})
         })
         
     }
@@ -53,11 +54,19 @@ function Form(props) {
                     onChange={handleChange} 
                     value={formData.date}>
                     </input>
-                    <label htmlFor='img'>Image URL <span>(must end in jpg, jpeg, png, webp, avif, gif or svg)</span></label>
-                    <input type="url" name="img" id="img" required 
+                    <label htmlFor='img-url'>Image URL <span>(must end in jpg, jpeg, png, webp, avif, gif or svg)</span></label>
+                    <input type="url" name="img" id="img-url"
                     onChange={handleChange} 
                     value={formData.img}>
                     </input>
+
+
+                    <label htmlFor="img-file">Select image:</label>
+                    <input type="file" id="img-file" name="imgFile" accept="image/*"
+                    onChange={handleChange}>
+                    </input>
+
+
                     <div className='form-btns'>
                         <button className='add' title="Add photo">
                             {Object.keys(props.editableFormData).length === 0 ? 'Add' : 'Save'}
