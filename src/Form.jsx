@@ -15,7 +15,9 @@ function Form(props) {
         date: "",
         img: "",
         imgFile: "",
+        imgFileName: "",
         cardId: "",
+        isFavorite: false
     }
     )
 
@@ -23,8 +25,12 @@ function Form(props) {
     
     function handleChange(e) {
         const {name, value, files} = e.target
+        let imgFileName = ""
+        if (files) {
+            imgFileName = files[0].name
+        }
         setFormData(prevData => {
-            return ({...prevData, [name]: name === "imgFile" ? URL.createObjectURL(files[0]): value})
+            return ({...prevData, imgFileName: imgFileName, [name]: name === "imgFile" ? URL.createObjectURL(files[0]): value})
         })
         
     }
@@ -54,18 +60,38 @@ function Form(props) {
                     onChange={handleChange} 
                     value={formData.date}>
                     </input>
+
+
+
                     <label htmlFor='img-url'>Image URL <span>(must end in jpg, jpeg, png, webp, avif, gif or svg)</span></label>
                     <input type="url" name="img" id="img-url"
                     onChange={handleChange} 
                     value={formData.img}>
                     </input>
 
+                    
+                    {
 
-                    <label htmlFor="img-file">Select image:</label>
+                    !formData.img &&
+                    <>
+                    <div 
+                    
+                    style={{
+                        display: "flex", justifyContent: "center", 
+                        width: "100%", fontSize: "1.1rem", marginTop: "10px"
+                    }}>
+
+                    <i>OR</i>
+                    </div>
+
+                    <label htmlFor="img-file">Upload image</label>
                     <input type="file" id="img-file" name="imgFile" accept="image/*"
-                    onChange={handleChange}>
+                        onChange={handleChange}>
                     </input>
+                    
+                    </>
 
+                    }
 
                     <div className='form-btns'>
                         <button className='add' title="Add photo">

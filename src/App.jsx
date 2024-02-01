@@ -16,10 +16,8 @@ function App() {
 	const [editableFormData, seteditableFormData] = React.useState({})
 
 	function toggleNewForm(e, cardId) {
-		console.log("id: " + cardId)
 		setisFormVisible(isFormVisible => !isFormVisible);
 		const tempFormData = cards.filter(card => card.cardId === cardId)[0]
-		console.log(tempFormData)
 		seteditableFormData({...tempFormData})
 		
 	}
@@ -30,20 +28,27 @@ function App() {
 
 
 	function isImage(url) {
-		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/i.test(url);
 	}
 
 
 	function handleSubmit(e, formData) {
 		e.preventDefault()
 
-		console.log(formData)
+		if(!formData.imgFileName && !formData.img) {
+			alert("Please add an image")
+			return
+		}
+
+		if(formData.imgFileName && !isImage(formData.imgFileName)) {
+			alert("Invalid file type")
+			return
+		}
+
 		if(formData.img && !isImage(formData.img)) {
 			alert("Invalid URL")
 			return
 		}
-
-
 
 		if (!formData.cardId) {
 			setCards(prevCards => [...prevCards, { ...formData, cardId: nanoid() }])
@@ -68,6 +73,19 @@ function App() {
 		})
 	}
 
+
+	function toggleFavorite(e, targetId) {
+		setCards(prevCards => {
+			const temp = prevCards.map(card => {
+				return card.cardId === targetId ? 
+				{...card, isFavorite: !card.isFavorite} :
+				card
+			})
+			return temp
+		})
+	}
+
+
 	const cardComponents = cards.map(card => {
 		return (
 			<Card
@@ -78,6 +96,8 @@ function App() {
 				imgFile={card.imgFile}
 				date={card.date}
 				cardId = {card.cardId}
+				isFavorite={card.isFavorite}
+				toggleFavorite={toggleFavorite}
 				toggleNewForm={toggleNewForm}
 				deleteCard={deleteCard}
 			/>
@@ -85,11 +105,11 @@ function App() {
 	})
 
 
-
 	return (
 		<>
 			<Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-			<main className={!darkMode ? "" : "dark"}>
+
+
 			<div className={!darkMode ? "" : "dark"}>
 
 				{isFormVisible && <Form 
@@ -99,6 +119,9 @@ function App() {
 				/>}
 
 			</div>
+
+			<main className={!darkMode ? "" : "dark"}>
+	
 			<button 
 				className='new-btn'
 				onClick={toggleNewForm}>
