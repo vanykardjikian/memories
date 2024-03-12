@@ -580,10 +580,14 @@ main.dark {
 	}
 }
 
-@media (max-width:829px) {
+@media (max-width:830px) {
 	.card {
 		width: 100%;
 		max-height: fit-content;
+	}
+
+	.card-img {
+		max-height: none;
 	}
 }
 
