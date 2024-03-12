@@ -35,7 +35,6 @@ function Form(props) {
         
     }
 
-
     return (
         <div className='form-popup'>
             <div className='form-popup-inner'>
@@ -63,21 +62,21 @@ function Form(props) {
                     value={formData.date}>
                     </input>
 
-
-
+                    {
+                    !formData.imgFile &&
+                    
+                    <>
                     <label htmlFor='img-url'>Image URL <span>(must end in jpg, jpeg, png, webp, avif, gif or svg)</span></label>
                     <input type="url" name="img" id="img-url"
                     onChange={handleChange} 
                     value={formData.img}>
                     </input>
+                    </>
+                    }
 
-                    
                     {
-
-                    !formData.img &&
-                    <>
+                    (!formData.img && !formData.imgFile) &&
                     <div 
-                    
                     style={{
                         display: "flex", justifyContent: "center", 
                         width: "100%", fontSize: "1.1rem", marginTop: "10px"
@@ -85,15 +84,18 @@ function Form(props) {
 
                     <i>OR</i>
                     </div>
-
+                    }
+                    {
+                    !formData.img &&
+                    <>
                     <label htmlFor="img-file">Upload image</label>
                     <input type="file" id="img-file" name="imgFile" accept="image/*"
                         onChange={handleChange}>
                     </input>
                     
                     </>
-
                     }
+
 
                     <div className='form-btns'>
                         <button className='add' title="Add photo">
