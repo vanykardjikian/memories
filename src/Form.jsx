@@ -46,10 +46,12 @@ function Form(props) {
                     }>
                     <label htmlFor='title'>Title <span>(optional)</span></label>
                     <input 
+                    maxLength="25"
                     type="text" name="title" id="title" 
                     onChange={handleChange}
                     value={formData.title}>
                     </input>
+                    <div className="counter">{formData.title.length}/25</div>
                     <label htmlFor='description'>Description <span>(optional)</span></label>
                     <input type="text" name="description" id="description"
                     onChange={handleChange} 

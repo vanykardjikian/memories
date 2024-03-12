@@ -5,22 +5,57 @@ import Card from './Card.jsx'
 import Navbar from './Navbar.jsx'
 import { nanoid } from "nanoid"
 
+
 function App() {
 
 	const [cards, setCards] = React.useState([])
 
+	const [visibleCards, setVisibleCards] = React.useState("all")
+
 	const [darkMode, setDarkMode] = React.useState(false)
 
-	const [isFormVisible, setisFormVisible] = React.useState(false)
+	const [isFormVisible, setIsFormVisible] = React.useState(false)
 
-	const [editableFormData, seteditableFormData] = React.useState({})
+	const [editableFormData, setEditableFormData] = React.useState({})
 
 	function toggleNewForm(e, cardId) {
-		setisFormVisible(isFormVisible => !isFormVisible);
+		setIsFormVisible(isFormVisible => !isFormVisible);
 		const tempFormData = cards.filter(card => card.cardId === cardId)[0]
-		seteditableFormData({...tempFormData})
-		
+		setEditableFormData({...tempFormData})
 	}
+
+
+	React.useEffect(() => {
+		const defaultCards = [
+		{
+			cardId: nanoid(),
+			title: "Add Cards to Favorites",
+			description: "Save your favorite photos for quick access!",
+			img: 'https://i.imgur.com/VBjwEqp.png',
+			date: "2024-01-29",
+			isFavorite: false
+		},
+		{
+			cardId: nanoid(),
+			title: "Edit Your Cards",
+			description: "Easily modify the details of your cards!",
+			img: 'https://i.imgur.com/oAoRDYS.png',
+			date: "2024-01-29",
+			isFavorite: false
+		},
+		{
+			cardId: nanoid(),
+			title: "Delete Unwanted Cards",
+			description: "Easily remove unwanted photos!",
+			img: 'https://i.imgur.com/QGOpTmU.png',
+			date: "2024-01-29",
+			isFavorite: false
+		}
+		]
+
+        setCards(defaultCards)
+    }, []);
+
 
 	function toggleDarkMode() {
 		setDarkMode(prevMode => !prevMode)
@@ -62,7 +97,6 @@ function App() {
 				return temp
 			})
 		}
-		
 		toggleNewForm()
 	}
 
@@ -81,28 +115,49 @@ function App() {
 				{...card, isFavorite: !card.isFavorite} :
 				card
 			})
+			console.log(temp)
 			return temp
 		})
 	}
 
+	function showFavorites() {
+		setVisibleCards("fav")
+	}
 
-	const cardComponents = cards.map(card => {
-		return (
-			<Card
-				key={card.cardId}
-				title={card.title}
-				description={card.description}
-				img={card.img}
-				imgFile={card.imgFile}
-				date={card.date}
-				cardId = {card.cardId}
-				isFavorite={card.isFavorite}
-				toggleFavorite={toggleFavorite}
-				toggleNewForm={toggleNewForm}
-				deleteCard={deleteCard}
-			/>
-		)
-	})
+	function showAll() {
+		setVisibleCards("all")
+	}
+	
+	function generateCardComponents(cardsArr) {
+		return cardsArr.map(card => {
+			return (
+				<Card
+					key={card.cardId}
+					title={card.title}
+					description={card.description}
+					img={card.img}
+					imgFile={card.imgFile}
+					date={card.date}
+					cardId = {card.cardId}
+					isFavorite={card.isFavorite}
+					toggleFavorite={toggleFavorite}
+					toggleNewForm={toggleNewForm}
+					deleteCard={deleteCard}
+				/>
+			)
+		})
+	}
+
+
+	let cardComponents = []
+	if (visibleCards === "all") {
+		cardComponents = generateCardComponents(cards)
+	} else {
+		const favoriteCards = cards.filter(card => card.isFavorite)
+		cardComponents = generateCardComponents(favoriteCards)
+	}
+
+	
 
 
 	return (
@@ -121,12 +176,25 @@ function App() {
 			</div>
 
 			<main className={!darkMode ? "" : "dark"}>
-	
-			<button 
-				className='new-btn'
-				onClick={toggleNewForm}>
-					<i className='bx bx-plus-circle'></i><h4>&nbsp;New Card</h4>
-			</button>
+			
+			<div className='btns-container'>
+				<div className='visible-btn-container'>
+					<button className={visibleCards == "all" ? 'visible-btn active' : 'visible-btn'} 
+					onClick={showAll}>All</button>
+
+					<button className={visibleCards == "fav" ? 'visible-btn active' : 'visible-btn'} 
+					onClick={showFavorites}>Favorites</button>
+
+				</div>
+
+				<button 
+					className='new-btn'
+					onClick={toggleNewForm}>
+						<i className='bx bx-plus-circle'></i><h4>&nbsp;New Card</h4>
+				</button>
+			</div>
+			
+			
 				{cardComponents.length ?
 					<div className="cards-container">
 						{cardComponents}
