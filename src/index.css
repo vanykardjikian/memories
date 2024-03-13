@@ -38,6 +38,7 @@ nav.dark {
 
 .nav-logo {
 	cursor: default;
+	display: flex;
 }
 
 .toggler-container {
@@ -742,6 +743,10 @@ footer {
 	
 	.empty-album {
 		margin: 50% 20px;
+	}
+
+	.nav-logo > img {
+		height: 30px;
 	}
 }
 
