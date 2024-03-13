@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-
+import logo from './logo.png'
 function Navbar(props) {
     return(
     <nav 
         className={props.darkMode ? "dark": ""}
     >
-        <h1 className="nav-title">Memories</h1>
+        <a className="nav-logo" href="#"><img src={logo}></img></a>
         <div 
             className="toggler-container" 
         >

@@ -6,7 +6,7 @@ import Navbar from './Navbar.jsx'
 import { nanoid } from "nanoid"
 import ConfirmationDialog from './ConfirmationDialog.jsx'
 import Footer from './Footer.jsx'
-
+import ScrollToTopButton from './ScrollToTopButton.jsx'
 
 function App() {
 
@@ -227,6 +227,7 @@ function App() {
 				</div>
 				<Footer />
 			</main>
+			<ScrollToTopButton />
 			
 		</>
 	)
