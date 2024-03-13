@@ -9,20 +9,19 @@ import ConfirmationDialog from './ConfirmationDialog.jsx'
 
 function App() {
 
-	const [cards, setCards] = React.useState([])
-
-	const [visibleCards, setVisibleCards] = React.useState("all")
-
 	const [darkMode, setDarkMode] = React.useState(false)
 
+	const [cards, setCards] = React.useState([])
+	const [visibleCards, setVisibleCards] = React.useState("all")
+
 	const [isFormVisible, setIsFormVisible] = React.useState(false)
-
-	const [deleteConfirmationDialog, setDeleteConfirmationDialog] = React.useState({isVisible: false, targetId:null})
-
-
 	const [editableFormData, setEditableFormData] = React.useState({})
+	const [errorMessage, setErrorMessage] = React.useState("")
+	const [deleteConfirmationDialog, setDeleteConfirmationDialog] = React.useState({isVisible: false, targetId:null})
+	
 
 	function toggleNewForm(e, cardId) {
+		setErrorMessage("")
 		setIsFormVisible(isFormVisible => !isFormVisible);
 		const tempFormData = cards.filter(card => card.cardId === cardId)[0]
 		setEditableFormData({...tempFormData})
@@ -73,19 +72,19 @@ function App() {
 
 	function handleSubmit(e, formData) {
 		e.preventDefault()
-		console.log(formData)
+		console.log(errorMessage)
 		if(!formData.imgFile && !formData.img) {
-			alert("Please add an image")
+			setErrorMessage("Please add an image")
 			return
 		}
 
 		if(formData.imgFileName && !isImage(formData.imgFileName)) {
-			alert("Invalid file type")
+			setErrorMessage("Invalid file type")
 			return
 		}
 
 		if(formData.img && !isImage(formData.img)) {
-			alert("Invalid URL")
+			setErrorMessage("Invalid URL")
 			return
 		}
 
@@ -177,24 +176,24 @@ function App() {
 		<>
 			<Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-
+			{
+			isFormVisible && 
 			<div className={!darkMode ? "" : "dark"}>
-
-				{isFormVisible && <Form 
+				<Form 
 					handleSubmit={handleSubmit} 
 					toggleNewForm={toggleNewForm} 
 					editableFormData={editableFormData}
-				/>}
-
+					errorMessage={errorMessage}
+				/>
 			</div>
-			
-			
-			<div className={!darkMode ? "" : "dark"}>
-			{
-			deleteConfirmationDialog.isVisible &&
-			<ConfirmationDialog confirmDelete={confirmDelete}/>
 			}
-			</div>				
+			
+			{	
+			deleteConfirmationDialog.isVisible &&
+			<div className={!darkMode ? "" : "dark"}>
+			<ConfirmationDialog confirmDelete={confirmDelete}/>
+			</div>	
+			}			
 			
 
 

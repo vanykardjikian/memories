@@ -43,6 +43,14 @@ function Form(props) {
                         props.handleSubmit(e, formData) :
                         props.handleSubmit(e, {...formData, cardId: props.editableFormData.cardId})
                     }>
+
+                    {
+                    props.errorMessage && 
+                    <div className='error-msg'>
+                        <h6 id='error-title'>Error</h6>
+                        <p>{props.errorMessage}</p>
+                    </div>
+                    }
                     <label htmlFor='title'>Title <span>(optional)</span></label>
                     <input 
                     maxLength="25"
@@ -115,7 +123,8 @@ function Form(props) {
 Form.propTypes = {
     handleSubmit: PropTypes.func,
     toggleNewForm: PropTypes.func,
-    editableFormData: PropTypes.object
+    editableFormData: PropTypes.object,
+    errorMessage:PropTypes.string,
 }
 
 
