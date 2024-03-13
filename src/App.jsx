@@ -4,6 +4,7 @@ import Form from './Form.jsx'
 import Card from './Card.jsx'
 import Navbar from './Navbar.jsx'
 import { nanoid } from "nanoid"
+import ConfirmationDialog from './ConfirmationDialog.jsx'
 
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
 	const [darkMode, setDarkMode] = React.useState(false)
 
 	const [isFormVisible, setIsFormVisible] = React.useState(false)
+
+	const [deleteConfirmationDialog, setDeleteConfirmationDialog] = React.useState({isVisible: false, targetId:null})
+
 
 	const [editableFormData, setEditableFormData] = React.useState({})
 
@@ -100,11 +104,20 @@ function App() {
 		toggleNewForm()
 	}
 
+	function confirmDelete(confirm) {
+		if (confirm) {
+			setCards(prevCards => {
+				return prevCards.filter(card => card.cardId !== deleteConfirmationDialog.targetId)
+			})
+		}
+
+		setDeleteConfirmationDialog({isVisible: false, targetId:null})
+	}
+
+
 
 	function deleteCard(e, targetId) {
-		setCards(prevCards => {
-			return prevCards.filter(card => card.cardId !== targetId)
-		})
+		setDeleteConfirmationDialog({isVisible: true, targetId:targetId})
 	}
 
 
@@ -174,6 +187,16 @@ function App() {
 				/>}
 
 			</div>
+			
+			
+			<div className={!darkMode ? "" : "dark"}>
+			{
+			deleteConfirmationDialog.isVisible &&
+			<ConfirmationDialog confirmDelete={confirmDelete}/>
+			}
+			</div>				
+			
+
 
 			<main className={!darkMode ? "" : "dark"}>
 			

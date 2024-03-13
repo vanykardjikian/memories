@@ -577,6 +577,57 @@ main.dark {
 	border: 1px solid #e3b66b;
 }
 
+/* delete popups */
+.delete-popup > .form-popup-inner {
+    top: 40%;
+	font-size: 1.2rem;
+}
+
+
+.dark .delete-popup {
+	color: white;
+}
+
+.delete-popup-btns > button {
+	padding: 7px 12px;
+	margin: 5px;
+	border: 1.4px solid #242424;
+	border-radius: 5px;
+	font-size: 1rem;
+	letter-spacing: .05rem;
+	border-radius: 7px;
+	cursor: pointer;
+	transition: ease 0.2s;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+}
+
+.delete-popup-btns > .cancel-btn {
+	background-color: transparent;
+}
+
+.delete-popup-btns > .cancel-btn:hover {
+	background-color: #e5e5e5;
+}
+
+.dark .delete-popup-btns > .cancel-btn {
+	color: white;
+	border-color: white;
+}
+
+.dark .delete-popup-btns > .cancel-btn:hover {
+	background-color: #171717
+}
+
+.delete-popup-btns > .delete-btn {
+	background-color: rgb(222, 85, 85);
+	color: white;
+	border-color: transparent;
+}
+
+.delete-popup-btns > .delete-btn:hover {
+	background-color: rgb(208, 57, 57);
+}
 
 
  /* Responsive */ 
