@@ -5,6 +5,7 @@ import Card from './Card.jsx'
 import Navbar from './Navbar.jsx'
 import { nanoid } from "nanoid"
 import ConfirmationDialog from './ConfirmationDialog.jsx'
+import Footer from './Footer.jsx'
 
 
 function App() {
@@ -198,23 +199,23 @@ function App() {
 
 
 			<main className={!darkMode ? "" : "dark"}>
-			
-			<div className='btns-container'>
-				<div className='visible-btn-container'>
-					<button className={visibleCards == "all" ? 'visible-btn active' : 'visible-btn'} 
-					onClick={showAll}>All</button>
+			<div className='container'>
+				<div className='btns-container'>
+					<div className='visible-btn-container'>
+						<button className={visibleCards == "all" ? 'visible-btn active' : 'visible-btn'} 
+						onClick={showAll}>All</button>
 
-					<button className={visibleCards == "fav" ? 'visible-btn active' : 'visible-btn'} 
-					onClick={showFavorites}>Favorites</button>
+						<button className={visibleCards == "fav" ? 'visible-btn active' : 'visible-btn'} 
+						onClick={showFavorites}>Favorites</button>
 
+					</div>
+
+					<button 
+						className='new-btn'
+						onClick={toggleNewForm}>
+							<i className='bx bx-plus-circle'></i><h4>&nbsp;New Card</h4>
+					</button>
 				</div>
-
-				<button 
-					className='new-btn'
-					onClick={toggleNewForm}>
-						<i className='bx bx-plus-circle'></i><h4>&nbsp;New Card</h4>
-				</button>
-			</div>
 			
 			
 				{cardComponents.length ?
@@ -223,7 +224,10 @@ function App() {
 					</div> :
 					<p className='empty-album'>You have no photos in your album!</p>
 				}
+				</div>
+				<Footer />
 			</main>
+			
 		</>
 	)
 }
