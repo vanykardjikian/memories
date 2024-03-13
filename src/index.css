@@ -333,7 +333,7 @@ main.dark {
 }
 
 .card .edit-btn,  .card .delete-btn, .card .fav-btn {
-    display: none;
+    visibility: hidden;
 	border: none;
 	background-color: transparent;
 	font-size: 1.2rem;
@@ -376,7 +376,7 @@ main.dark {
 }
 
 .card:hover .edit-btn, .card:hover .delete-btn, .card:hover .fav-btn {
-    display: block;
+    visibility: visible;
 }
 
 
