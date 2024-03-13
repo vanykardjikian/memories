@@ -50,6 +50,8 @@ nav.dark {
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 }
 
 .toggler > .bx {
@@ -110,6 +112,8 @@ main.dark {
 	align-items: center;
 	color: rgba(54, 54, 54, 0.7);
 	transition: ease 0.3s;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 }
 
 .new-btn:hover {
@@ -142,6 +146,8 @@ main.dark {
 	color: rgba(54, 54, 54, 0.9);
 	background-color: #F5F5F5;
 	transition: ease 0.3s;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 }
 
 .dark .visible-btn {
@@ -338,6 +344,8 @@ main.dark {
 	background-color: transparent;
 	font-size: 1.2rem;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 	transition: ease-in-out 0.2s;
 }
 
@@ -378,6 +386,7 @@ main.dark {
 .card:hover .edit-btn, .card:hover .delete-btn, .card:hover .fav-btn {
     visibility: visible;
 }
+
 
 
 
@@ -524,6 +533,8 @@ main.dark {
 	border-radius: 7px;
 	cursor: pointer;
 	transition: ease 0.2s;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 }
 
 
@@ -540,6 +551,8 @@ main.dark {
 	border-radius: 7px;
 	cursor: pointer;
 	transition: ease 0.2s;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 }
 
 .form-btns > .add:hover {
