@@ -188,7 +188,8 @@ main.dark {
 	letter-spacing: 0.4rem;
 	padding: 7px;
 	width: fit-content;
-	margin: 15% 20px;
+	margin: 5% 20px;
+	margin-top: 10%;
 	border-bottom: 4px solid #cba563;
 	color: #242424;
 }
@@ -770,11 +771,6 @@ footer {
 		top: 59px;
 	}
 
-	
-	.empty-album {
-		margin: 50% 20px;
-	}
-
 	.nav-logo > img {
 		height: 25px;
 	}
@@ -801,5 +797,10 @@ footer {
 
 	.btns-container {
 		padding: 30px 10px 10px 10px;
+	}
+
+	
+	.empty-album {
+		margin-top: 30%;
 	}
 }
