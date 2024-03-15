@@ -782,6 +782,10 @@ footer {
 		max-height: fit-content;
 	}
 
+	.card-description {
+		max-height: 150px;
+	}
+
 	.card-img {
 		max-height: none;
 	}
@@ -799,7 +803,6 @@ footer {
 		padding: 30px 10px 10px 10px;
 	}
 
-	
 	.empty-album {
 		margin-top: 30%;
 	}
