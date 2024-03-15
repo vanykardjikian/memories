@@ -43,14 +43,19 @@ function Form(props) {
                         props.handleSubmit(e, formData) :
                         props.handleSubmit(e, {...formData, cardId: props.editableFormData.cardId})
                     }>
-
-                    {
-                    props.errorMessage && 
-                    <div className='error-msg'>
-                        <h6 id='error-title'>Error</h6>
-                        <p>{props.errorMessage}</p>
+                    <div className='header'>
+                        {
+                        props.errorMessage && 
+                        <div className='error-msg'>
+                            <h6 id='error-title'>Error</h6>
+                            <p>{props.errorMessage}</p>
+                        </div>
+                        }
+                    <button className='x-btn' onClick={props.toggleNewForm}><i className='bx bx-x'></i></button>
                     </div>
-                    }
+                    
+
+                    
                     <label htmlFor='title'>Title <span>(optional)</span></label>
                     <input 
                     maxLength="25"

@@ -12,6 +12,7 @@ function ConfirmationDialog(props) {
     return (
         <div className="delete-popup form-popup">
             <div className="form-popup-inner">
+            <button className='x-btn' onClick={handleCancel}><i className='bx bx-x'></i></button>
                 <h3>Are you sure you want to delete this card?</h3>
                 <div className='delete-popup-btns'>
                     <button className='delete-btn' onClick={handleDelete}>Delete</button>

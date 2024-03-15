@@ -596,7 +596,7 @@ main.dark {
 
 .my-form .error-msg {
 	color: rgb(222, 85, 85);
-	margin: 5px;
+	margin: 0 0 5px 5px;
 	padding: 10px 25px;
 	background-color:rgba(222, 85, 85, 0.1);
 	border-left: 6px solid rgb(222, 85, 85);
@@ -622,12 +622,42 @@ main.dark {
 	color: white;
 }
 
+.my-form .header {
+	display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+	width: 100%;
+}
+
+.x-btn {
+	background-color: transparent;
+	padding: 0;
+	margin-right: 0;
+	margin-left: auto;
+	border: none;
+	border-radius: 7px;
+	display: flex;
+	align-items: center;
+}
+
+
+.x-btn > .bx {
+	font-size: 2rem;
+	color: black;
+}
+
+.dark .x-btn > .bx {
+	color: white;
+}
 
 /* delete popups */
 .delete-popup > .form-popup-inner {
 	font-size: 1.2rem;
 }
 
+.delete-popup > .form-popup-inner > h3{
+	margin-top: 0;
+}
 
 .dark .delete-popup {
 	color: white;
