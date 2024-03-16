@@ -776,6 +776,10 @@ footer {
 	.nav-logo > img {
 		height: 25px;
 	}
+
+	.empty-album {
+		font-size: 1.6rem;
+	}
 }
 
 @media (max-width:830px) {
