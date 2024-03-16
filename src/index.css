@@ -456,7 +456,7 @@ main.dark {
 	width: 100%;
 	padding: 2px;
 	margin: 5px;
-	line-height: 2rem;
+	height: 40px;
 	text-indent: 0.2rem;
 	border-radius: 7px;
 	border: 0.5px solid rgba(0, 0, 0, 0.6);
