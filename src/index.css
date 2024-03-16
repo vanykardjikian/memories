@@ -482,6 +482,7 @@ main.dark {
 	margin: 10px 1px 1px 5px;
 	font-size: 1.1rem;
 	font-weight: 700;
+	text-align: left;
 }
 
 .my-form > label > span {
