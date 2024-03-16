@@ -22,9 +22,13 @@ function App() {
 	
 
 	React.useEffect(() => {
-		const body = document.querySelector('body');
-		body.style.overflow = isFormVisible || deleteConfirmationDialog.isVisible ? 'hidden' : 'auto';
-	}, [isFormVisible, deleteConfirmationDialog.isVisible]);
+		const body = document.querySelector('body')
+		body.style.overflow = isFormVisible || deleteConfirmationDialog.isVisible ? 'hidden' : 'auto'
+
+		return () => {
+			body.style.overflow = 'auto'
+		}
+	}, [isFormVisible, deleteConfirmationDialog.isVisible])
 
 
 	function toggleNewForm(e, cardId) {
