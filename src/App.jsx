@@ -81,9 +81,7 @@ function App() {
 	}
 
 
-	function handleSubmit(e, formData) {
-		e.preventDefault()
-		console.log(errorMessage)
+	function handleSubmit(formData) {
 		if(!formData.imgFile && !formData.img) {
 			setErrorMessage("Please add an image")
 			return
