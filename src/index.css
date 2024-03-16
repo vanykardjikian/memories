@@ -633,7 +633,8 @@ main.dark {
 .x-btn {
 	background-color: transparent;
 	padding: 0;
-	margin-right: 0;
+	margin-right: -10px;
+	margin-top: -8px;
 	margin-left: auto;
 	border: none;
 	border-radius: 7px;
