@@ -21,6 +21,12 @@ function App() {
 	const [deleteConfirmationDialog, setDeleteConfirmationDialog] = React.useState({isVisible: false, targetId:null})
 	
 
+	React.useEffect(() => {
+		const body = document.querySelector('body');
+		body.style.overflow = isFormVisible || deleteConfirmationDialog.isVisible ? 'hidden' : 'auto';
+	}, [isFormVisible, deleteConfirmationDialog.isVisible]);
+
+
 	function toggleNewForm(e, cardId) {
 		setErrorMessage("")
 		setIsFormVisible(isFormVisible => !isFormVisible);

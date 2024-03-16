@@ -92,7 +92,8 @@ function Form(props) {
                     <div 
                     style={{
                         display: "flex", justifyContent: "center", 
-                        width: "100%", fontSize: "1.1rem", marginTop: "10px"
+                        width: "100%", fontSize: "1.1rem", marginTop: "10px",
+                        marginLeft: '5px'
                     }}>
 
                     <i>OR</i>
