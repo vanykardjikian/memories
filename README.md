@@ -2,7 +2,7 @@
 
 Memories is a React-based web application that allows users to create and manage their photo albums. Users can add new cards with images, titles, descriptions, and dates. They can also mark cards as favorites, edit existing cards, and delete unwanted cards.
 
-**Live preview:** https://vee1807.github.io/memories/
+**Live preview:** https://vanykardjikian.github.io/memories/
 
 
 ## Usage
